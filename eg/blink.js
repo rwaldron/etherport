@@ -19,10 +19,10 @@ board.on("ready", function() {
 
   var state = 1;
 
-  this.pinMode(13, this.MODES.OUTPUT);
+  this.pinMode(2, this.MODES.OUTPUT);
 
   setInterval(function() {
-    this.digitalWrite(13, (state ^= 1));
+    this.digitalWrite(2, (state ^= 1));
   }.bind(this), 500);
 });
 
