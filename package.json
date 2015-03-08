@@ -15,6 +15,15 @@
     "es6-shim": "^0.25.3"
   },
   "devDependencies": {
-    "firmata": "^0.4.0"
+    "firmata": "^0.4.0",
+    "sinon": "^1.13.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-jsbeautifier": "~0.2.2"
+  },
+  "scripts": {
+    "test": "grunt"
   }
 }
