@@ -1,7 +1,7 @@
 {
   "name": "etherport",
-  "version": "0.0.1",
-  "description": "Alternate communication transport for use with Firmata.js",
+  "version": "0.1.0",
+  "description": "Ethernet communication transport for use with Firmata.js",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
