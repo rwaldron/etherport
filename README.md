@@ -7,7 +7,7 @@ EtherPort is a transport layer that works in conjunction with [Firmata.js]() to 
 
 EtherPort can be used to communicate with an Arduino (or similar) board running either: 
 
-- [StandardFirmataEthernet](https://github.com/firmata/arduino/tree/ethernet)
+- [StandardFirmataEthernet](https://github.com/firmata/arduino/tree/ethernet) (preferred)
 - [ConfigurableFirmata](https://github.com/firmata/arduino/tree/configurable)
 
 
@@ -22,7 +22,8 @@ EtherPort can be used to communicate with an Arduino (or similar) board running 
 8. Open the serial terminal and copy the IP address
 9. Obtain your ethernet port IP address (many ways to do this)
 10. In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernet
-11. Update these lines with your computer and board IP addresses: 
+11. Uncomment the includes for your particular hardware see [Options A, B and C in the Network Configuration notes](https://github.com/firmata/arduino/blob/ethernet/examples/StandardFirmataEthernet/StandardFirmataEthernet.ino#L67-L111).
+12. Update these lines with your computer and board IP addresses: 
   - This is the computer's address 
   ```
   #define remote_ip IPAddress(10, 0, 0, 3)
@@ -30,7 +31,7 @@ EtherPort can be used to communicate with an Arduino (or similar) board running 
   - This is the arduino's address
 
   ```
-  #define remote_ip IPAddress(10, 0, 0, 3)
+  #define local_ip IPAddress(10, 0, 0, 15)
   ```
 
 Everything on the board side should be ready now, all you need to do is install the latest Johnny-Five and EtherPort: 
