@@ -39,7 +39,9 @@ var net = {
     tcp.removeAllListeners();
     socket.removeAllListeners();
 
-    callback(sendSocket ? socket : null);
+    setImmediate(function() {
+      callback(sendSocket ? socket : null);
+    });
 
     return tcp;
   }
@@ -51,12 +53,14 @@ exports["Connection"] = {
     EtherPort.__mock(net);
     done();
   },
+
   tearDown: function(done) {
     EtherPort.__reset();
     restore(this);
     sendSocket = true;
     done();
   },
+
   error: function(test) {
     test.expect(1);
 
@@ -66,6 +70,7 @@ exports["Connection"] = {
 
     test.done();
   },
+
   initialize: function(test) {
     test.expect(2);
     var etherport = new EtherPort(1337);
@@ -73,6 +78,20 @@ exports["Connection"] = {
     test.equal(tcp.listen.callCount, 1);
     test.done();
   },
+
+  etherportEmitsSocketOpen: function(test) {
+    test.expect(1);
+
+    var etherport = new EtherPort(1337);
+
+    etherport.on("open", function() {
+      test.ok(true);
+      test.done();
+    });
+
+    tcp.emit("connection", socket);
+  },
+
   etherportEmitsSocketData: function(test) {
     test.expect(1);
 
@@ -86,25 +105,29 @@ exports["Connection"] = {
     tcp.emit("connection", socket);
     socket.emit("data");
   },
+
   etherportWriteThroughToSocket: function(test) {
     test.expect(5);
 
     var etherport = new EtherPort(1337);
     var buffer = new Buffer([1, 1, 1, 1]);
 
-    etherport.write(buffer);
+    etherport.on("open", function() {
+      etherport.write(buffer);
 
-    test.equal(socket.write.callCount, 1);
+      test.equal(socket.write.callCount, 1);
 
-    var written = socket.write.getCall(0).args[0];
+      var written = socket.write.getCall(0).args[0];
 
 
-    for (var i = 0; i < buffer.length; i++) {
-      test.equal(buffer.readUInt8(i), written.readUInt8(i));
-    }
+      for (var i = 0; i < buffer.length; i++) {
+        test.equal(buffer.readUInt8(i), written.readUInt8(i));
+      }
 
-    test.done();
+      test.done();
+    });
   },
+
   etherportWriteQueue: function(test) {
     test.expect(8);
 
@@ -134,6 +157,7 @@ exports["Connection"] = {
 
     test.done();
   },
+
   etherportFlush: function(test) {
     test.expect(4);
 
