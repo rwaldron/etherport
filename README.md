@@ -54,6 +54,33 @@ board.on("ready", function() {
 });
 ```
 
+## Compatible Shields & Boards
+
+The following shields are those that have been tested and confirmed to work correctly with Etherport + Firmata.js + Johnny-Five.
+
+
+### Arduino Ethernet Shield 
+
+- [Arduino Ethernet Shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield)
+- [Arduino Ethernet Shield R3](http://www.amazon.com/Arduino-Rev3-Ethernet-Shield-R3/dp/B006UT97FE)
+
+![](https://raw.githubusercontent.com/rwaldron/etherport/5521fe4d9f7dd65f552351b5e85276f1d383c824/shields/arduino-ethernet.jpg)
+
+### Generic Arduino Compatible Ethernet Shield
+
+- [Ethernet Shield W5100](http://www.amazon.com/JBtek-Ethernet-Micro-sd-Arduino-Duemilanove/dp/B00RIKTVOG/)
+
+![](https://raw.githubusercontent.com/rwaldron/etherport/5f610ed0e8cd43cd60315e1265c6baece2270d0d/shields/hanrun-ethernet.jpg)
+
+
+### DFRobot X-Board V2
+
+- [XBoard V2 -A bridge between home and internet (Arduino Compatible)](http://www.dfrobot.com/index.php?route=product/product&product_id=564#.VeSD5tNViko)
+
+![](https://raw.githubusercontent.com/rwaldron/etherport/5f610ed0e8cd43cd60315e1265c6baece2270d0d/shields/dfrobot-arduino-compatible-xboard.jpg)
+
+
+
 
 
 ## License
