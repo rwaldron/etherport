@@ -27,10 +27,10 @@ EtherPort can be used to communicate with an Arduino (or similar) board running 
   ```
   #define remote_ip IPAddress(10, 0, 0, 3)
   ```
-  - This is the arduino's address
+  - This is the Arduino's address:
 
   ```
-  #define remote_ip IPAddress(10, 0, 0, 3)
+  #define local_ip IPAddress(10, 0, 0, 3)
   ```
 
 Everything on the board side should be ready now, all you need to do is install the latest Johnny-Five and EtherPort: 
