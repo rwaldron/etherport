@@ -10,22 +10,20 @@ EtherPort is a transport layer that works in conjunction with [Firmata.js]() to 
 
 EtherPort can be used to communicate with an Arduino (or similar) board running either: 
 
-- [StandardFirmataEthernet](https://github.com/firmata/arduino/tree/ethernet)
+- [StandardFirmataEthernet](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataEthernet)
+- [StandardFirmataEthernetPlus](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataEthernetPlus)
 - [ConfigurableFirmata](https://github.com/firmata/arduino/tree/configurable)
 
+The latest version Arduino IDE ships with StandardFirmataEthernet and StandardFirmataEthernetPlus. 
 
-
-1. Click the "Download ZIP" on this page: https://github.com/firmata/arduino/tree/ethernet
-2. Once downloaded, unzip the file and rename the directory "Firmata"
-3. To update your Arduino IDE's version of Firmata, follow [these directions](https://github.com/firmata/arduino/tree/ethernet#updating-firmata-in-the-arduino-ide)
-4. If using an Ethernet shield, plug the shield into the board.
-5. Connect the board to the computer via USB (for flashing StandardFirmataEthernet.ino)
-6. Connect the board to the computer via Ethernet 
-7. Open Arduino IDE, then: File -> Examples -> Ethernet -> DhcpAddressPrinter and then press the upload button.
-8. Open the serial terminal and copy the IP address
-9. Obtain your ethernet port IP address (many ways to do this)
-10. In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernet
-11. Update these lines with your computer and board IP addresses: 
+1. If using an Ethernet shield, plug the shield into the board.
+2. Connect the board to the computer via USB (for flashing StandardFirmataEthernet.ino)
+3. Connect the board to the computer via Ethernet 
+4. Open Arduino IDE, then: File -> Examples -> Ethernet -> DhcpAddressPrinter and then press the upload button.
+5. Open the serial terminal and copy the printed IP address.
+6. Obtain your ethernet port IP address (many ways to do this)
+7.  In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernetPlus
+8.  Update these lines with your computer and board IP addresses: 
   - This is the computer's address 
   ```
   #define remote_ip IPAddress(10, 0, 0, 3)
