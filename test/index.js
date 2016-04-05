@@ -49,14 +49,15 @@ var net = {
 
 exports["Connection"] = {
   setUp: function(done) {
-    this.createServer = sinon.spy(net, "createServer");
+    this.sandbox = sinon.sandbox.create();
+    this.createServer = this.sandbox.spy(net, "createServer");
     EtherPort.__mock(net);
     done();
   },
 
   tearDown: function(done) {
     EtherPort.__reset();
-    restore(this);
+    this.sandbox.restore();
     sendSocket = true;
     done();
   },
