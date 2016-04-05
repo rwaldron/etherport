@@ -1,13 +1,13 @@
 {
   "name": "etherport",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Ethernet communication transport for use with Firmata.js",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt"
   },
   "author": "",
   "license": "MIT",
@@ -22,8 +22,5 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-jsbeautifier": "~0.2.2"
-  },
-  "scripts": {
-    "test": "grunt"
   }
 }
