@@ -17,12 +17,12 @@ EtherPort can be used to communicate with an Arduino (or similar) board running 
 The latest version Arduino IDE ships with StandardFirmataEthernet and StandardFirmataEthernetPlus. 
 
 1. If using an Ethernet shield, plug the shield into the board.
-2. Connect the board to the computer via USB (for flashing StandardFirmataEthernet.ino)
-3. Connect the board to the computer via Ethernet 
+2. Connect the board to the computer via USB cable.
+3. Connect the board to the computer via Ethernet cable.
 4. Open Arduino IDE, then: File -> Examples -> Ethernet -> DhcpAddressPrinter and then press the upload button.
 5. Open the serial terminal and copy the printed IP address.
 6. Obtain your ethernet port IP address (many ways to do this)
-7.  In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernetPlus
+7.  In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernet (or StandardFirmataEthernetPlus)
 8.  Update these lines with your computer and board IP addresses: 
   - This is the computer's address 
   ```
@@ -50,7 +50,7 @@ var board = new five.Board({
 });
 
 board.on("ready", function() {
-  var led = new five.Led(8);
+  var led = new five.Led(9);
   led.blink(500);
 });
 ```
