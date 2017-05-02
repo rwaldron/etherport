@@ -6,32 +6,34 @@
 EtherPort is a transport layer that works in conjunction with [Firmata.js]() to enable communcation with an Ethernet capable Arduino or similar device. 
 
 
+
 ## Setup
 
 EtherPort can be used to communicate with an Arduino (or similar) board running either: 
 
-- [StandardFirmataEthernet](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataEthernet)
-- [StandardFirmataEthernetPlus](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataEthernetPlus)
+- [StandardFirmataEthernet](https://github.com/firmata/arduino) (preferred)
 - [ConfigurableFirmata](https://github.com/firmata/arduino/tree/configurable)
 
-The latest version Arduino IDE ships with StandardFirmataEthernet and StandardFirmataEthernetPlus. 
 
-1. If using an Ethernet shield, plug the shield into the board.
-2. Connect the board to the computer via USB cable.
-3. Connect the board to the computer via Ethernet cable.
-4. Open Arduino IDE, then: File -> Examples -> Ethernet -> DhcpAddressPrinter and then press the upload button.
-5. Open the serial terminal and copy the printed IP address.
-6. Obtain your ethernet port IP address (many ways to do this)
-7.  In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernet (or StandardFirmataEthernetPlus)
-8.  Update these lines with your computer and board IP addresses: 
+
+1. Update your Arduino IDE's version of Firmata to the latest release following [these directions](https://github.com/firmata/arduino/blob/master/readme.md#updating-firmata-in-the-arduino-ide). For StandardFirmataEthernet, be sure to download a Firmata release and not a ConfigurableFirmata pre-release.
+2. If using an Ethernet shield, plug the shield into the board.
+3. Connect the board to the computer via USB (for flashing StandardFirmataEthernet.ino)
+4. Connect the board to the computer via Ethernet 
+5. Open Arduino IDE, then: File -> Examples -> Ethernet -> DhcpAddressPrinter and then press the upload button.
+6. Open the serial terminal and copy the IP address
+7. Obtain your ethernet port IP address (many ways to do this)
+8. In the Arduino IDE, open File -> Examples -> Firmata -> StandardFirmataEthernet
+9. If you are using an Arduino Yun, comment out the SPI.h and Ethernet.h includes and uncomment the Bridge.h and YunClient.h includes [See Options A and B in the Network Configuration notes](https://github.com/firmata/arduino/blob/master/examples/StandardFirmataEthernet/StandardFirmataEthernet.ino#L74-L99).
+10. Update these lines with your computer and board IP addresses: 
   - This is the computer's address 
   ```
   #define remote_ip IPAddress(10, 0, 0, 3)
   ```
-  - This is the Arduino's address:
+  - This is the arduino's address
 
   ```
-  #define local_ip IPAddress(10, 0, 0, 3)
+  #define local_ip IPAddress(10, 0, 0, 15)
   ```
 
 Everything on the board side should be ready now, all you need to do is install the latest Johnny-Five and EtherPort: 
@@ -50,40 +52,12 @@ var board = new five.Board({
 });
 
 board.on("ready", function() {
-  var led = new five.Led(9);
+  var led = new five.Led(8);
   led.blink(500);
 });
 ```
-
-## Compatible Shields & Boards
-
-The following shields are those that have been tested and confirmed to work correctly with Etherport + Firmata.js + Johnny-Five.
-
-
-### Arduino Ethernet Shield 
-
-- [Arduino Ethernet Shield](https://www.arduino.cc/en/Main/ArduinoEthernetShield)
-- [Arduino Ethernet Shield R3](http://www.amazon.com/Arduino-Rev3-Ethernet-Shield-R3/dp/B006UT97FE)
-
-![](https://raw.githubusercontent.com/rwaldron/etherport/master/shields/arduino-ethernet-r3.jpg)
-
-### Generic Arduino Compatible Ethernet Shield
-
-- [Ethernet Shield W5100](http://www.amazon.com/JBtek-Ethernet-Micro-sd-Arduino-Duemilanove/dp/B00RIKTVOG/)
-
-![](https://raw.githubusercontent.com/rwaldron/etherport/master/shields/hanrun-ethernet.jpg)
-
-
-### DFRobot X-Board V2
-
-- [XBoard V2 -A bridge between home and internet (Arduino Compatible)](http://www.dfrobot.com/index.php?route=product/product&product_id=564#.VeSD5tNViko)
-
-![](https://raw.githubusercontent.com/rwaldron/etherport/master/shields/dfrobot-arduino-compatible-xboard.jpg)
-
-
 
 
 
 ## License
 See LICENSE-MIT file.
-
