@@ -159,6 +159,24 @@ exports["Connection"] = {
     test.done();
   },
 
+  etherportWriteCallback: function(test) {
+    test.expect(2);
+
+    sendSocket = false;
+
+    var etherport = new EtherPort(1337);
+    var leakedPriv = EtherPort.__leak();
+    var state = leakedPriv.get(etherport);
+    var buffer = new Buffer([1, 1, 1, 1]);
+    var spy = sinon.spy(function() {
+      test.equal(spy.called, true);
+      test.equal(spy.callCount, 1);
+      test.done();
+    });
+
+    etherport.write(buffer, spy);
+  },
+
   etherportFlush: function(test) {
     test.expect(4);
 
